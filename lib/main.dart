@@ -17,21 +17,44 @@ void main() {
   runApp(MaterialApp(home: DemoList()));
 }
 
-class DemoList extends StatelessWidget {
+class DemoList extends StatefulWidget {
+
+  @override
+  _DemoListState createState() => _DemoListState();
+  
+}
+
+class _DemoListState extends State<DemoList> {
+  List<Widget> widgets = <Widget>[];
+  List titles = ["increment","flutter_channel"];
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < titles.length; i++) {
+      widgets.add(getRow(titles[i]));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(children: <Widget>[
-            ListTile(title:Text("商品列表")),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(title: Text("$index"));
-                },
-                itemCount: 10,
-              ),
-            ),
-          ])
-    ); 
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Sample App"),
+      ),
+      body: ListView(children: widgets, itemExtent: 60,),
+    );
+  }
+
+  Widget getRow(String title) {
+    return GestureDetector(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text("Row $title"),
+      ),
+      onTap: () {
+        print('row $title');
+      },
+    );
   }
 }
