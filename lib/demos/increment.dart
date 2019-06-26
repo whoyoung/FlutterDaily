@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class IncrementPage extends StatefulWidget {
+  
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  _IncrementPageState createState() => _IncrementPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _IncrementPageState extends State<IncrementPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -34,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
   return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("IncrementPage"),
       ),
       body: Center(
         child: Column(

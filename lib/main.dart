@@ -5,16 +5,17 @@
 
 import 'package:flutter/material.dart';
 
-// import 'package:flutter_daily/demos/flutter_channel.dart';
+import 'package:flutter_daily/demos/flutter_channel.dart';
 import 'package:flutter_daily/demos/increment.dart';
 
 void main() {
-
-  // runApp(MaterialApp(home: PlatformChannel()));
-
-  // runApp(MaterialApp(home: MyApp()));
-
-  runApp(MaterialApp(home: DemoList()));
+  runApp(MaterialApp(
+      home: DemoList(),
+      routes: {
+        "IncrementPage" :(context)=>IncrementPage(),
+        "PlatformChannel" :(context)=>PlatformChannel(),
+      },
+    ));
 }
 
 class DemoList extends StatefulWidget {
@@ -26,7 +27,7 @@ class DemoList extends StatefulWidget {
 
 class _DemoListState extends State<DemoList> {
   List<Widget> widgets = <Widget>[];
-  List titles = ["increment","flutter_channel"];
+  List titles = ["IncrementPage","PlatformChannel"];
 
   @override
   void initState() {
@@ -61,10 +62,11 @@ class _DemoListState extends State<DemoList> {
       ),
       onTap: () {
         print('row $title');
-        Navigator.push( context,
-           new MaterialPageRoute(builder: (context) {
-                  return new MyApp();
-             }));
+        Navigator.pushNamed(context, "$title");
+        // Navigator.push( context,
+        //    new MaterialPageRoute(builder: (context) {
+        //           return new IncrementPage();
+        //      }));
           },
     );
   }

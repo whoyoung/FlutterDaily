@@ -51,14 +51,23 @@ class _PlatformChannelState extends State<PlatformChannel> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("PlatformChannel"),
+      ),
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(_batteryLevel, key: const Key('Battery level label')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(_batteryLevel, key: const Key('Battery level label')),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: RaisedButton(
