@@ -62,7 +62,7 @@ class _DemoListState extends State<DemoList> {
       ),
       onTap: () {
         print('row $title');
-        Navigator.pushNamed(context, "$title");
+        Navigator.pushNamed(context, "$title",arguments: {"param":"i am param"});
         // Navigator.push( context,
         //    new MaterialPageRoute(builder: (context) {
         //           return new IncrementPage();
