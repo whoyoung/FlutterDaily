@@ -48,9 +48,16 @@ class _DemoListState extends State<DemoList> {
 
   Widget getRow(String title) {
     return GestureDetector(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Text("Row $title"),
+        child: Container(
+          color: Colors.green,
+          child: Padding(
+            padding: EdgeInsets.all(0.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[Text("Row $title"),],
+            )
+        ),
       ),
       onTap: () {
         print('row $title');
