@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 
 // import 'package:flutter_daily/demos/flutter_channel.dart';
-// import 'package:flutter_daily/demos/increment.dart';
+import 'package:flutter_daily/demos/increment.dart';
 
 void main() {
 
@@ -61,7 +61,11 @@ class _DemoListState extends State<DemoList> {
       ),
       onTap: () {
         print('row $title');
-      },
+        Navigator.push( context,
+           new MaterialPageRoute(builder: (context) {
+                  return new MyApp();
+             }));
+          },
     );
   }
 }
