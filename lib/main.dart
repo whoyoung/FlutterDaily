@@ -28,7 +28,28 @@ class DemoList extends StatefulWidget {
 class _DemoListState extends State<DemoList> {
   List<Widget> widgets = <Widget>[];
   List titles = ["IncrementPage","PlatformChannel"];
+  List <BottomNavigationBarItem>navBarItems = [
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.business), title: Text('Business')),
+          BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School')),
+        ];
+  int _selectedIndex = 0;
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+  Object _showBody() {
+    if (_selectedIndex == 0) {
+      return ListView(children: widgets, itemExtent: 60,);
+    } else {
+      return Center(
+        child: Text("new body"),
+      );
+    }
+  }
+  
   @override
   void initState() {
     super.initState();
@@ -41,9 +62,15 @@ class _DemoListState extends State<DemoList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sample App"),
+        title:  navBarItems[_selectedIndex].title,
       ),
-      body: ListView(children: widgets, itemExtent: 60,),
+      body: _showBody(),
+      bottomNavigationBar: BottomNavigationBar( // 底部导航
+        items: navBarItems,
+        currentIndex: _selectedIndex,
+        fixedColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
     );
   }
 
